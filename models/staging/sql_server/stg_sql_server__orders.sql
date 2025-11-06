@@ -12,4 +12,4 @@ IFNULL(ORDER_TOTAL,'0') AS ORDER_TOTAL,
 DELIVERED_AT,
 TRACKING_ID,
 STATUS
-FROM {{source("sql_server","ORDERS")}}
+FROM {{source("sql_server","orders")}}

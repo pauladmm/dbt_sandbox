@@ -4,4 +4,4 @@ SELECT
     TRIM(COUNTRY,' ') AS COUNTRY,
     TRIM(ADDRESS,' ') AS ADDRESS,
     TRIM(STATE,' ') AS STATE    
-FROM {{source("sql_server", 'ADDRESSES')}}
+FROM {{source("sql_server", 'addresses')}}
