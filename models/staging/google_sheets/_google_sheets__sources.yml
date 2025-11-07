@@ -1,0 +1,35 @@
+version: 2
+
+sources:
+  - name: google_sheets
+    schema: GOOGLE_SHEETS
+    database: ALUMNO25_DEV_BRONZE_DB
+
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+
+    tables:
+      - name: budget
+        description: This table represents the desirable quantity of any product to be sold each month.
+        columns:
+          - name: _row
+            description: Incremental primary key of budget table.
+          - name: quantity
+            description: Units of products.
+          - name: month
+            description: Expresed as the last day of every month.
+          - name: product_id
+            description: Identificator of each product.
+          - name: fivetran_synced
+        config:
+          loaded_at_field: _fivetran_synced
+    config:
+      freshness:
+        error_after:
+          count: 465
+          period: day
+        warn_after:
+          count: 535
+          period: day
