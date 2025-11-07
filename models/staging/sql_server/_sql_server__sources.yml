@@ -1,0 +1,146 @@
+version: 2
+
+sources:
+  - name: sql_server
+    description: This data come from SQL Server database
+    schema: SQL_SERVER_DBO
+    database: ALUMNO25_DEV_BRONZE_DB
+
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+
+    tables:
+
+      - name: addresses
+        description: This table comprenhends all addresses registered.
+        columns:
+          - name: address_id
+            description: Primary key of addresses table
+            data_tests:
+              - not_null
+              - unique
+          - name: zipcode
+          - name: country
+          - name: address
+          - name: state
+          - name: _fivetran_deleted
+          - name: _fivetran_synced
+
+        config:
+          loaded_at_field: _fivetran_synced
+      - name: orders
+        description: The grain of this table is the order maden by day
+        columns:
+          - name: order_id
+            description: Primary key of orders table.
+            data_tests:
+              - not_null
+              - unique
+          - name: shipping_service
+            description: The service which take charge of shipping the order.
+          - name: shipping_cost
+            description: The cost of shipping the order.
+          - name: address_id
+            description: foreing key from addresses table. One user can have more than one addresses.
+            data_tests:
+              - relationships:
+                  arguments:
+                    field: address_id
+                    to: source('sql_server', 'addresses')
+          - name: created_at
+          - name: promo_id
+            description: foreing key from promos table. Not every order has a promo.
+            data_tests:
+              - relationships:
+                  arguments:
+                    field: promo_id
+                    to: source('sql_server', 'promos')
+          - name: estimated_delivery_at
+          - name: order_cost
+            description: Cost of the current order. Without shipping cost or discount.
+          - name: user_id
+            description: Foreing key from users table.
+            data_tests:
+              - relationships:
+                  arguments:
+                    field: user_id
+                    to: source('sql_server', 'users')
+          - name: order_total
+            description: Total cost of the order, taking into account discounts and shipping cost.
+          - name: delivered_at
+            description: When was the order delivered
+          - name: tracking_id
+            description: Tracking identificator from order's delivery.
+            data_tests:
+              - unique
+              - not_null
+          - name: status
+            description: The status of each order. Has concrete values.
+            data_tests:
+              - accepted_values:
+                  arguments:
+                    values:
+                      - "delivered"
+                      - "preparing"
+                      - "shipped"
+          - name: _fivetran_deleted
+          - name: _fivetran_synced
+
+        config:
+          loaded_at_field: _fivetran_synced
+      - name: products
+        description: Products table.
+        columns:
+          - name: product_id
+            description: Primary key of the products table.
+            data_tests:
+              - unique
+              - not_null
+          - name: price
+          - name: name
+          - name: inventory
+            description: Units of the product at the time.
+          - name: _fivetran_deleted
+          - name: _fivetran_synced
+
+        config:
+          loaded_at_field: _fivetran_synced
+      - name: users
+        description: Users table.
+        columns:
+          - name: user_id
+            description: Primary key of users table.
+            data_tests:
+              - unique
+              - not_null
+          - name: updated_at
+            description: When was the last time this user was modified.
+          - name: address_id
+            description: The current address of the user.
+            data_tests:
+              - relationships:
+                  arguments:
+                    field: address_id
+                    to: source('sql_server', 'addresses')
+          - name: last_name
+          - name: created_at
+          - name: phone_number
+          - name: total_orders
+            description: How many orders this user have been done.
+          - name: first_name
+          - name: email
+          - name: _fivetran_deleted
+          - name: _fivetran_synced
+
+        config:
+          loaded_at_field: _fivetran_synced
+    config:
+      freshness:
+        error_after:
+          count: 465
+          period: day
+        warn_after:
+          count: 535
+          period: day

@@ -1,6 +1,6 @@
 with src_countries as (
     select *
-    from {{source("sql_server",'addresses')}}
+    FROM {{ ref ('base_sql_server__addresses')}}
 ),
 countries_extracted as (
     select

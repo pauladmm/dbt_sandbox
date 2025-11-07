@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: stg_google_sheets__budget
+    description: Mensual budget of given products
+    columns:
+      - name: _row
+      - name: units
+      - name: month
+      - name: product_id
+      - name: date_load
