@@ -11,6 +11,7 @@ normalized as (
         CONVERT_TIMEZONE('UTC', CREATED_AT) as created_at,
         CONVERT_TIMEZONE('UTC', updated_at) as updated_at,
         CONVERT_TIMEZONE('UTC', _fivetran_synced) as date_load
+    from src_users
 
 )
 

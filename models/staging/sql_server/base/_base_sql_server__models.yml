@@ -12,7 +12,7 @@ models:
       - name: date_load
 
   - name: base_sql_server__orders
-    description: Orders from data source
+    description: Orders from data source.
     columns:
       - name: order_id
       - name: address_id

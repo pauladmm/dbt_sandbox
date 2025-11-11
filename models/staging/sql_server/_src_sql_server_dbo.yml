@@ -2,8 +2,9 @@ version: 2
 
 sources:
   - name: sql_server
-    description: ""
-    database: alumno25_dev_bronze_db
+    description: This data come from SQL Server database
+    schema: SQL_SERVER_DBO
+    database: ALUMNO25_DEV_BRONZE_DB
     tables:
       - name: addresses
         description: "This table comprenhends all addresses registered."
@@ -39,6 +40,9 @@ sources:
           - name: event_id
             data_type: varchar
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: page_url
             data_type: varchar
             description: ""
@@ -48,9 +52,19 @@ sources:
           - name: user_id
             data_type: varchar
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    field: user_id
+                    to: source('sql_server', 'users')
           - name: product_id
             data_type: varchar
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    field: product_id
+                    to: source('sql_server', 'products')
           - name: session_id
             data_type: varchar
             description: ""
@@ -60,6 +74,11 @@ sources:
           - name: order_id
             data_type: varchar
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    field: order_id
+                    to: source('sql_server', 'orders')
           - name: _fivetran_deleted
             data_type: boolean
             description: ""
@@ -73,9 +92,17 @@ sources:
           - name: order_id
             data_type: varchar
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: product_id
             data_type: varchar
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    field: product_id
+                    to: source('sql_server', 'products')
           - name: quantity
             data_type: number
             description: ""
@@ -92,6 +119,9 @@ sources:
           - name: order_id
             data_type: varchar
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: shipping_service
             data_type: varchar
             description: ""
@@ -101,12 +131,22 @@ sources:
           - name: address_id
             data_type: varchar
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    field: address_id
+                    to: source('sql_server', 'addresses')
           - name: created_at
             data_type: timestamp_tz
             description: ""
           - name: promo_id
             data_type: varchar
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    field: promo_id
+                    to: source('sql_server', 'promos')
           - name: estimated_delivery_at
             data_type: timestamp_tz
             description: ""
@@ -116,6 +156,11 @@ sources:
           - name: user_id
             data_type: varchar
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    field: user_id
+                    to: source('sql_server', 'users')
           - name: order_total
             data_type: float
             description: ""
@@ -141,6 +186,9 @@ sources:
           - name: product_id
             data_type: varchar
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: price
             data_type: float
             description: ""
@@ -163,6 +211,9 @@ sources:
           - name: promo_id
             data_type: varchar
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: discount
             data_type: number
             description: ""
@@ -182,12 +233,20 @@ sources:
           - name: user_id
             data_type: varchar
             description: ""
+            data_tests:
+              - not_null
+              - unique
           - name: updated_at
             data_type: timestamp_tz
             description: ""
           - name: address_id
             data_type: varchar
             description: ""
+            data_tests:
+              - relationships:
+                  arguments:
+                    field: address_id
+                    to: source('sql_server', 'addresses')
           - name: last_name
             data_type: varchar
             description: ""

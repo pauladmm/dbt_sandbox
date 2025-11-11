@@ -6,8 +6,8 @@ normalized as (
         md5(promo_id) as promo_id,
         promo_id as promo_descr,
         discount as dollar_discount,
-        CASE status
-            when TRIM(STATUS,' ') = 'inactive' THEN False
+        CASE 
+            when TRIM(STATUS) = 'inactive' THEN False
             else True
         end as is_active,
         CONVERT_TIMEZONE('UTC', _fivetran_synced) as date_load
@@ -18,7 +18,7 @@ normalized as (
     
     select 
         md5('Unkown') as promo_id,
-        "no promo" as promo_descr,
+        'No promo' as promo_descr,
         0 as dollar_discount,
         True as is_active,
         CONVERT_TIMEZONE('UTC', _fivetran_synced) as date_load

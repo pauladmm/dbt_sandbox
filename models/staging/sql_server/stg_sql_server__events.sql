@@ -12,6 +12,7 @@ normalized as (
         event_type,
         CONVERT_TIMEZONE('UTC', created_at) as created_at,
         CONVERT_TIMEZONE('UTC', _fivetran_synced) as date_load
+    from src_events
 )
 
 select * from normalized
