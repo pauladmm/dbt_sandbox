@@ -1,6 +1,6 @@
 with src_states as (
     select *
-    from {{source("sql_server",'addresses')}}
+    from {{ ref ('base_sql_server__addresses')}}
 ),
 states_extracted as (
     select

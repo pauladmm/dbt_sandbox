@@ -8,7 +8,7 @@ normalized_orders as (
     SELECT
         ORDER_ID,
         ADDRESS_ID,
-        MD5(PROMO_ID) AS PROMO_ID,
+        MD5(IFNULL(PROMO_ID, 'Unkown')) AS PROMO_ID,
         USER_ID,
         TRACKING_ID,
         md5(IFNULL(SHIPPING_SERVICE, 'Unkown')) as shipping_id,

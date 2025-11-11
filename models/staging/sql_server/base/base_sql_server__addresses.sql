@@ -1,6 +1,6 @@
 with src_addresses as (
     select *
-    FROM {{source("sql_server", 'addresses')}}
+   FROM {{source("sql_server", 'addresses')}}
 ),
 normalized as (
     select 

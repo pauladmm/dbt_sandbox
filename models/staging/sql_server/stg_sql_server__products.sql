@@ -1,6 +1,6 @@
 with src_products as (
     SELECT * 
-    FROM {{ ref ('base_sql_server__addresses')}}
+    FROM {{ source("sql_server", 'products')}}
 ),
 
 normalized_prod as (

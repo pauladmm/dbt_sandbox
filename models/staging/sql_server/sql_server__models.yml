@@ -38,8 +38,7 @@ models:
           - type: not_null   
         description: >
           Date that the data was loaded.
-  - name: base_sql_server__addresses
-    description: Data all about addresses in demo.
+
   - name: stg_sql_server__addresses
     description: Normalized table of addresses with ids hashed
     columns:
