@@ -3,9 +3,9 @@ with src_states as (
     from {{ ref ('base_sql_server__addresses')}}
 ),
 states_extracted as (
-    select
+    select distinct
     md5(state) as state_id,
-    TRIM(STATE,' ') as state_name
+    TRIM(STATE) as state_name
     from src_states
 )
 

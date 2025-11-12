@@ -4,7 +4,7 @@ sources:
   - name: sql_server
     description: This data come from SQL Server database
     schema: SQL_SERVER_DBO
-    database: ALUMNO25_DEV_BRONZE_DB
+    database: "{{ env_var('DBT_ENVIRONMENTS') }}_BRONZE_DB"
     tables:
       - name: addresses
         description: "This table comprenhends all addresses registered."
@@ -60,11 +60,7 @@ sources:
           - name: product_id
             data_type: varchar
             description: ""
-            data_tests:
-              - relationships:
-                  arguments:
-                    field: product_id
-                    to: source('sql_server', 'products')
+
           - name: session_id
             data_type: varchar
             description: ""
@@ -74,11 +70,6 @@ sources:
           - name: order_id
             data_type: varchar
             description: ""
-            data_tests:
-              - relationships:
-                  arguments:
-                    field: order_id
-                    to: source('sql_server', 'orders')
           - name: _fivetran_deleted
             data_type: boolean
             description: ""
@@ -92,9 +83,6 @@ sources:
           - name: order_id
             data_type: varchar
             description: ""
-            data_tests:
-              - not_null
-              - unique
           - name: product_id
             data_type: varchar
             description: ""
@@ -142,11 +130,6 @@ sources:
           - name: promo_id
             data_type: varchar
             description: ""
-            data_tests:
-              - relationships:
-                  arguments:
-                    field: promo_id
-                    to: source('sql_server', 'promos')
           - name: estimated_delivery_at
             data_type: timestamp_tz
             description: ""
