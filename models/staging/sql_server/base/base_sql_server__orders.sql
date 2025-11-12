@@ -14,10 +14,11 @@ normalized as (
         IFNULL(ORDER_COST,'0') AS ORDER_COST,
         IFNULL(ORDER_TOTAL,'0') AS ORDER_TOTAL,
         CONVERT_TIMEZONE('UTC', CREATED_AT) as CREATED_AT,
-        CONVERT_TIMEZONE('UTC', ESTIMATED_AT) as ESTIMATED_AT,
-        CONVERT_TIMEZONE('UTC', DELIVERY_AT) as DELIVERY_AT,
+        CONVERT_TIMEZONE('UTC', ESTIMATED_DELIVERY_AT) as ESTIMATED_AT,
+        CONVERT_TIMEZONE('UTC', DELIVERED_AT) as DELIVERY_AT,
         STATUS,
-        date_load
+        CONVERT_TIMEZONE('UTC', _fivetran_synced) as date_load
+        from src_orders
 )
 
 select * from normalized

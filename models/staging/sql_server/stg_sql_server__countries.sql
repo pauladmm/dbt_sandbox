@@ -3,7 +3,7 @@ with src_countries as (
     FROM {{ ref ('base_sql_server__addresses')}}
 ),
 countries_extracted as (
-    select
+    select distinct
     md5(country) as country_id,
     TRIM(COUNTRY,' ') as country_name
     from src_countries

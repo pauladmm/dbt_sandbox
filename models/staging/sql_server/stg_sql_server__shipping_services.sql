@@ -4,9 +4,16 @@ with src_shipping as (
 ),
 normalized as (
     select
-        md5(IFNULL(SHIPPING_SERVICE, 'Unkown')) as shipping_id,
-        IFNULL(SHIPPING_SERVICE, 'Unkown') as shipping_service_name
+        case shipping_service
+            when shipping_service = ' ' then md5('Unkown')
+            else md5(IFNULL(SHIPPING_SERVICE, 'Unkown'))
+        end as shipping_id,
+        case shipping_service
+            when shipping_service = ' ' then 'Unkown'
+            else IFNULL(SHIPPING_SERVICE, 'Unkown')
+        end as shipping_service_name
     from src_shipping
+
 )
 
 select * from normalized
