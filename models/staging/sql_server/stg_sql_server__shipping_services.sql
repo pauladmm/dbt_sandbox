@@ -4,11 +4,11 @@ with src_shipping as (
 ),
 normalized as (
     select
-        case shipping_service
+        case 
             when shipping_service = ' ' then md5('Unkown')
             else md5(IFNULL(SHIPPING_SERVICE, 'Unkown'))
         end as shipping_id,
-        case shipping_service
+        case 
             when shipping_service = ' ' then 'Unkown'
             else IFNULL(SHIPPING_SERVICE, 'Unkown')
         end as shipping_service_name

@@ -26,4 +26,4 @@ SELECT * FROM renamed_casted
 
     WHERE _fivetran_synced > (SELECT MAX(_fivetran_synced) FROM {{ this }} )
 
-    {% endif %}
+{% endif %}

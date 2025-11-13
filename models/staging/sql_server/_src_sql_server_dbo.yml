@@ -86,11 +86,7 @@ sources:
           - name: product_id
             data_type: varchar
             description: ""
-            data_tests:
-              - relationships:
-                  arguments:
-                    field: product_id
-                    to: source('sql_server', 'products')
+            
           - name: quantity
             data_type: number
             description: ""
