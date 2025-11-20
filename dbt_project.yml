@@ -36,7 +36,7 @@ models:
     # Applies to all files under models/example/
     staging:
       +materialized: view
-      +database: "{{ env_var('DBT_ENVIRONMENTS') }}_SILVER_DB"
+      +database: "{{ env_var('DBT_ENVIRONMENTS') }}_SILVER"
       google_sheets:
         +schema: google_sheets
       sql_server:
@@ -44,16 +44,10 @@ models:
 
     marts:
       +materialized: table
-      +database: "{{ env_var('DBT_ENVIRONMENTS') }}_GOLD_DB"
-      core:
-        +schema: core
-seeds:
-  +schema: seed_data
-  +database: "{{ env_var('DBT_ENVIRONMENTS') }}_BRONZE_DB"
-snapshots:
-  +transient: false
-  +target_database: "{{ env_var('DBT_ENVIRONMENTS') }}_SILVER_DB"
-  +target_schema: snapshots
+      +database: "{{ env_var('DBT_ENVIRONMENTS') }}_GOLD"
+
+
+
 
 flags:
   require_generic_test_arguments_property: true
