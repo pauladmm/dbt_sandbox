@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: MENTAL_HEATLH_AND_SOCIAL_MEDIA_BALANCE
+    columns:
+      - name: user_id
+      - name: daily_screen_time_hours
+      - name: sleep_quality
+      - name: stress_level
+      - name: days_without_social_media
+      - name: exercise_frequency_week
+      - name: social_media_platform
+      - name: happiness_index
+
+  - name: student_performance
+    columns:
+      - name: student_id
+      - name: hours_studied
+      - name: sleep_hours
+      - name: attendance_percent
+      - name: previous_scores
+      - name: exam_score

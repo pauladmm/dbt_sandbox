@@ -1,0 +1,75 @@
+
+version: 2
+
+sources:
+  - name: kaggle
+    description: "These datasets come from Kaggle"
+    database: "{{ env_var('DBT_ENVIRONMENTS') }}_BRONZE"
+    tables:
+      - name: mental_health_and_social_media_balance
+        description: "This table contains information about wellbeing and social media behaviour of a given user"
+        columns:
+          - name: user_id
+            data_type: varchar
+            description: "User id"
+          - name: age
+            data_type: number
+            description: "User age"
+          - name: gender
+            data_type: varchar
+            description: "User gender"
+          - name: daily_screen_time(hrs)
+            data_type: varchar
+            description: "Daily screen time hours of user"
+          - name: sleep_quality(1-10)
+            data_type: varchar
+            data_tests:
+              - positive_values
+              - dbt_utils.accepted_range:
+                  max_value: 10
+            description: "Sleep quality of user based in health tracker app"
+          - name: stress_level(1-10)
+            data_type: varchar
+            data_tests:
+              - positive_values
+              - dbt_utils.accepted_range:
+                    max_value: 10
+            description: "Stress level stat of user based in health tracker app"
+          - name: days_without_social_media
+            data_type: number
+            description: "Days in a row user has not been in any social media platform."
+          - name: exercise_frequency(week)
+            data_type: varchar
+            description: "How many times a week a user does exercise"
+          - name: social_media_platform
+            data_type: varchar
+            description: "Social media platform preference by user."
+          - name: happiness_index(1-10)
+            data_type: varchar
+            description: "Happiness index calculated by algorithm"
+            data_tests:
+              - positive_values
+              - dbt_utils.accepted_range:
+                    max_value: 10
+
+      - name: student_performance
+        description: "Student performance in school"
+        columns:
+          - name: student_id
+            data_type: varchar
+            description: "Student id"
+          - name: hours_studied
+            data_type: number
+            description: "Hours dedicated to studying by user"
+          - name: sleep_hours
+            data_type: number
+            description: "Sleep hours the previous day to an exam"
+          - name: attendance_percent
+            data_type: number
+            description: "Percentage of attendance in the subject by user"
+          - name: previous_scores
+            data_type: number
+            description: "Examen score in the previous exam"
+          - name: exam_score
+            data_type: number
+            description: "Exam score"
