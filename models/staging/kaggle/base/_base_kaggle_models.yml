@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: MENTAL_HEATLH_AND_SOCIAL_MEDIA_BALANCE
+  - name: base_kaggle__mental_health_and_social_media
     columns:
       - name: user_id
       - name: daily_screen_time_hours
@@ -12,11 +12,3 @@ models:
       - name: social_media_platform
       - name: happiness_index
 
-  - name: student_performance
-    columns:
-      - name: student_id
-      - name: hours_studied
-      - name: sleep_hours
-      - name: attendance_percent
-      - name: previous_scores
-      - name: exam_score

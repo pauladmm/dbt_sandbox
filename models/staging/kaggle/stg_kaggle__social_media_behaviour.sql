@@ -1,6 +1,6 @@
 with src_social_media_behaviour as (
     select *
-    from {{ref("base_kaggle_mental_health_and_social_media")}}
+    from {{ref("base_kaggle__mental_health_and_social_media")}}
 ),
 
 normalized as (

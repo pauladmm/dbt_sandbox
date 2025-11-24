@@ -41,10 +41,12 @@ models:
         +schema: google_sheets
       sql_server:
         +schema: sql_server
+      kaggle:
+        +schema: kaggle
 
-    marts:
-      +materialized: table
-      +database: "{{ env_var('DBT_ENVIRONMENTS') }}_GOLD"
+    ## marts:
+      ## +materialized: table
+      ## +database: "{{ env_var('DBT_ENVIRONMENTS') }}_GOLD"
 
 
 

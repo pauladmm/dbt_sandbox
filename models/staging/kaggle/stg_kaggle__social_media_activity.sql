@@ -1,29 +1,32 @@
 with src_social_media_activity as (
     select * 
-    from {{ref('base_kaggle_mental_health_and_social_media')}}
+    from {{ref('base_kaggle__mental_health_and_social_media')}}
+),
+with_device as (
+    select
+        *,
+        case social_media_platform
+            when 'TikTok' then 
+                case when uniform(0,1,random()) < 0.98 then 'mobile' else 'desktop' end
+            when 'YouTube' then 
+                case 
+                    when uniform(0,1,random()) < 0.50 then 'mobile'
+                    when uniform(0,1,random()) < 0.90 then 'desktop'
+                    else 'smart_tv'
+                end
+            when 'LinkedIn' then 
+                case when uniform(0,1,random()) < 0.60 then 'desktop' else 'mobile' end
+            when 'Instagram' then 
+                case when uniform(0,1,random()) < 0.90 then 'mobile' else 'desktop' end
+            else
+                case when uniform(0,1,random()) < 0.70 then 'mobile' else 'desktop' end
+        end as device
+    from src_social_media_activity
 ),
 normalized as (
     select
     user_id,
-    
-    -- DEVICE
-    case social_media_platform
-        when 'TikTok' then 
-            case when uniform(0,1,random()) < 0.98 then 'mobile' else 'desktop' end
-        when 'YouTube' then 
-            case 
-                when uniform(0,1,random()) < 0.50 then 'mobile'
-                when uniform(0,1,random()) < 0.90 then 'desktop'
-                else 'smart_tv'
-            end
-        when 'LinkedIn' then 
-            case when uniform(0,1,random()) < 0.60 then 'desktop' else 'mobile' end
-        when 'Instagram' then 
-            case when uniform(0,1,random()) < 0.90 then 'mobile' else 'desktop' end
-        else
-            case when uniform(0,1,random()) < 0.70 then 'mobile' else 'desktop' end
-    end as device,
-
+    abs(mod(hash(user_id || '_' || device), 100000000)) as device_id,
     -- EVENT TYPE
     case 
         when social_media_platform = 'YouTube' then 
@@ -89,7 +92,7 @@ normalized as (
         end
     )::integer as session_time_seconds
 
-from src_social_media_activity;
+from with_device
 
 )
 
