@@ -3,7 +3,7 @@ with src_student_performance as (
     FROM {{ref("stg_kaggle__student_performance")}}
 ),
 base as (
-    SELECT
+    SELECT distinct
         (abs(mod(hash(student_id), 12)) + 1) as subject_id,
         case (abs(mod(hash(student_id), 12)) + 1)
             when 1  then 'Mathematics'
