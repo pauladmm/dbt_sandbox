@@ -11,6 +11,6 @@ select
     {{ dbt_utils.generate_surrogate_key(['promo_id']) }} as promo_key,
     promo_id,
     promo_descr,
-    dollar_discount,
+    dollar_discount as discount_amount,
     is_active
 from promos

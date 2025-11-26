@@ -47,7 +47,14 @@ models:
     marts:
       +materialized: table
       +database: "{{ env_var('DBT_ENVIRONMENTS') }}_GOLD"
-      +schema: core
+      core:
+        +schema: core
+      marketing:
+        +schema: marketing
+      sales:
+        +schema: sales
+      user360:
+        +schema: user360
 
 
 
