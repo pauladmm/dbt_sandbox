@@ -85,12 +85,13 @@ sources:
             description: "Notification vía of campaign"
             data_tests:
               - accepted_values:
-                  values:
-                    - "Email"
-                    - "Social Media"
-                    - "Push Notification"
-                    - "Search Ads"
-                    - "Display Ads"
+                  arguments:
+                    values:
+                      - "Email"
+                      - "Social Media"
+                      - "Push Notification"
+                      - "Search Ads"
+                      - "Display Ads"
           - name: topic
             data_type: varchar
             description: "Kind of campaign"

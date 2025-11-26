@@ -15,7 +15,8 @@ base as (
             when 0 then 'first'
             when 1 then 'second'
             when 2 then 'third'
-        end as term
+        end as term,
+        CONVERT_TIMEZONE('UTC',CURRENT_TIMESTAMP()) AS record_loaded_at
     from src_student_performance
 )
 

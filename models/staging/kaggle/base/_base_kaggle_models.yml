@@ -11,4 +11,5 @@ models:
       - name: exercise_frequency_week
       - name: social_media_platform
       - name: happiness_index
+      - name: record_loaded_at
 

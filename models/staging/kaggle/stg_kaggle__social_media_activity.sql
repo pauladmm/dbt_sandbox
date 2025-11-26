@@ -90,7 +90,8 @@ normalized as (
             when device = 'smart_tv' then 2.2
             else 1.0
         end
-    )::integer as session_time_seconds
+    )::integer as session_time_seconds,
+    record_loaded_at
 
 from with_device
 

@@ -11,7 +11,8 @@ base as (
       days_without_social_media,
       "Exercise_Frequency(week)" as exercise_frequency_week,
       social_media_platform,
-      "Happiness_Index(1-10)" as happiness_index
+      "Happiness_Index(1-10)" as happiness_index,
+       CONVERT_TIMEZONE('UTC',CURRENT_TIMESTAMP()) AS record_loaded_at
     from src_wellbeing_and_social_media
 )
 
