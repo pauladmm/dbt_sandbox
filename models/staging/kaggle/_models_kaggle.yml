@@ -1,0 +1,170 @@
+version: 2
+
+models:
+  - name: stg__identity_bridge
+    description: ""
+    columns:
+      - name: user_bridge_id
+        data_type: varchar
+        description: ""
+
+      - name: ecommerce_user_id
+        data_type: varchar
+        description: ""
+
+      - name: social_user_id
+        data_type: varchar
+        description: ""
+
+      - name: student_user_id
+        data_type: varchar
+        description: ""
+
+  - name: stg_kaggle__devices
+    description: ""
+    columns:
+      - name: device_id
+        data_type: number
+        description: ""
+
+      - name: device
+        data_type: varchar
+        description: ""
+
+  - name: stg_kaggle__marketing_campaigns
+    description: ""
+    columns:
+      - name: campaign_id
+        data_type: varchar
+        description: "Campaign id"
+
+      - name: campaign_type
+        data_type: varchar
+        description: "Notification v\u00eda of campaign"
+
+      - name: topic
+        data_type: varchar
+        description: "Kind of campaign"
+
+      - name: target
+        data_type: varchar
+        description: "Target user of the campaign"
+
+      - name: sent_at
+        data_type: timestamp_tz
+        description: "When was the campaign sent"
+
+  - name: stg_kaggle__social_media_activity
+    description: ""
+    columns:
+      - name: user_id
+        data_type: varchar
+        description: ""
+
+      - name: device_id
+        data_type: number
+        description: ""
+
+      - name: event_type
+        data_type: varchar
+        description: ""
+
+      - name: content_topic
+        data_type: varchar
+        description: ""
+
+      - name: session_time_seconds
+        data_type: number
+        description: ""
+
+      - name: record_loaded_at
+        data_type: timestamp_tz
+        description: ""
+
+  - name: stg_kaggle__social_media_behaviour
+    description: ""
+    columns:
+      - name: user_id
+        data_type: varchar
+        description: ""
+
+      - name: daily_screen_time_hours
+        data_type: varchar
+        description: ""
+
+      - name: days_without_social_media
+        data_type: number
+        description: ""
+
+  - name: stg_kaggle__student_performance
+    description: ""
+    columns:
+      - name: student_id
+        data_type: varchar
+        description: "Student id"
+
+      - name: subject_id
+        data_type: number
+        description: ""
+
+      - name: hours_studied
+        data_type: number
+        description: "Hours dedicated to studying by user"
+
+      - name: sleep_hours
+        data_type: number
+        description: "Sleep hours the previous day to an exam"
+
+      - name: attendance_percent
+        data_type: number
+        description: "Percentage of attendance in the subject by user"
+
+      - name: previous_scores
+        data_type: number
+        description: "Examen score in the previous exam"
+
+      - name: exam_score
+        data_type: number
+        description: "Exam score"
+
+      - name: term
+        data_type: varchar
+        description: ""
+
+      - name: record_loaded_at
+        data_type: timestamp_tz
+        description: ""
+
+  - name: stg_kaggle__subjects
+    description: ""
+    columns:
+      - name: subject_id
+        data_type: number
+        description: ""
+
+      - name: subject_name
+        data_type: varchar
+        description: ""
+
+  - name: stg_kaggle__wellbeing
+    description: ""
+    columns:
+      - name: user_id
+        data_type: varchar
+        description: ""
+
+      - name: sleep_quality
+        data_type: varchar
+        description: ""
+
+      - name: stress_level
+        data_type: varchar
+        description: ""
+
+      - name: exercise_frequency_week
+        data_type: varchar
+        description: ""
+
+      - name: happiness_index
+        data_type: varchar
+        description: ""

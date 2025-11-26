@@ -10,18 +10,20 @@ with student_performance as (
     term
     from {{ref("stg_kaggle__student_performance")}}
 ),
-student_info as (
+student_info as(
     select
-    *
+    student_user_id,
+    user_key
     from {{ref("dim_users")}}
 ),
+
 dim_date as (
     select * from {{ref("dim_date")}}
 )
 
 select
     {{ dbt_utils.generate_surrogate_key(['user_key','date_key', 'subject_id']) }} as performance_key,
-    user_key as student_key,
+    user_key,
     dd.date_key,
     subject_id,
     hours_studied,

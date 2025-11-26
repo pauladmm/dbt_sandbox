@@ -36,7 +36,8 @@ select
     dd.date_key,
     event_type,
     content_topic,
-    session_time_seconds
+    session_time_seconds,
+    record_loaded_at
 from sm_activity sma
 left join social_media_user smu on smu.social_user_id = sma.user_id
 left join devices d on d.device_id = sma.device_id

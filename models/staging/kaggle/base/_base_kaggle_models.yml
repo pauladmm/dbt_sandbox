@@ -6,10 +6,28 @@ models:
       - name: user_id
       - name: daily_screen_time_hours
       - name: sleep_quality
+        tests:
+              - positive_values
+              - dbt_utils.accepted_range:
+                  arguments:
+                    min_value: 1
+                    max_value: 10
       - name: stress_level
+        tests:
+              - positive_values
+              - dbt_utils.accepted_range:
+                  arguments:
+                    min_value: 1
+                    max_value: 10
       - name: days_without_social_media
       - name: exercise_frequency_week
       - name: social_media_platform
       - name: happiness_index
+        tests:
+              - positive_values
+              - dbt_utils.accepted_range:
+                  arguments:
+                    min_value: 1
+                    max_value: 10
       - name: record_loaded_at
 

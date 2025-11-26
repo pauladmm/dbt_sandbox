@@ -1,0 +1,434 @@
+version: 2
+
+models:
+  - name: dim_date
+    description: ""
+    columns:
+      - name: date_key
+        data_type: varchar
+        description: ""
+
+      - name: date_day
+        data_type: date
+        description: ""
+
+      - name: prior_date_day
+        data_type: date
+        description: ""
+
+      - name: next_date_day
+        data_type: date
+        description: ""
+
+      - name: prior_year_date_day
+        data_type: date
+        description: ""
+
+      - name: prior_year_over_year_date_day
+        data_type: date
+        description: ""
+
+      - name: day_of_week
+        data_type: number
+        description: ""
+
+      - name: day_of_week_iso
+        data_type: number
+        description: ""
+
+      - name: day_of_week_name
+        data_type: varchar
+        description: ""
+
+      - name: day_of_week_name_short
+        data_type: varchar
+        description: ""
+
+      - name: day_of_month
+        data_type: number
+        description: ""
+
+      - name: day_of_year
+        data_type: number
+        description: ""
+
+      - name: week_start_date
+        data_type: date
+        description: ""
+
+      - name: week_end_date
+        data_type: date
+        description: ""
+
+      - name: prior_year_week_start_date
+        data_type: date
+        description: ""
+
+      - name: prior_year_week_end_date
+        data_type: date
+        description: ""
+
+      - name: week_of_year
+        data_type: number
+        description: ""
+
+      - name: iso_week_start_date
+        data_type: date
+        description: ""
+
+      - name: iso_week_end_date
+        data_type: date
+        description: ""
+
+      - name: prior_year_iso_week_start_date
+        data_type: date
+        description: ""
+
+      - name: prior_year_iso_week_end_date
+        data_type: date
+        description: ""
+
+      - name: iso_week_of_year
+        data_type: number
+        description: ""
+
+      - name: iso_year_week
+        data_type: varchar
+        description: ""
+
+      - name: prior_year_week_of_year
+        data_type: number
+        description: ""
+
+      - name: prior_year_iso_week_of_year
+        data_type: number
+        description: ""
+
+      - name: month_of_year
+        data_type: number
+        description: ""
+
+      - name: month_name
+        data_type: varchar
+        description: ""
+
+      - name: month_name_short
+        data_type: varchar
+        description: ""
+
+      - name: month_start_date
+        data_type: date
+        description: ""
+
+      - name: month_end_date
+        data_type: date
+        description: ""
+
+      - name: prior_year_month_start_date
+        data_type: date
+        description: ""
+
+      - name: prior_year_month_end_date
+        data_type: date
+        description: ""
+
+      - name: quarter_of_year
+        data_type: number
+        description: ""
+
+      - name: quarter_start_date
+        data_type: date
+        description: ""
+
+      - name: quarter_end_date
+        data_type: date
+        description: ""
+
+      - name: year_number
+        data_type: number
+        description: ""
+
+      - name: year_start_date
+        data_type: date
+        description: ""
+
+      - name: year_end_date
+        data_type: date
+        description: ""
+
+      - name: term
+        data_type: varchar
+        description: ""
+
+  - name: dim_devices
+    description: ""
+    columns:
+      - name: device_key
+        data_type: varchar
+        description: ""
+
+      - name: device_id
+        data_type: number
+        description: ""
+
+      - name: user_id
+        data_type: varchar
+        description: ""
+
+      - name: device
+        data_type: varchar
+        description: ""
+
+  - name: dim_products
+    description: ""
+    columns:
+      - name: product_key
+        data_type: varchar
+        description: ""
+
+      - name: product_id
+        data_type: varchar
+        description: "UUID for each unique product on platform.\n"
+
+      - name: product_name
+        data_type: varchar
+        description: "Name of the product.\n"
+
+      - name: unit_price_usd
+        data_type: number
+        description: "Price of the product.\n"
+
+      - name: inventory
+        data_type: number
+        description: "Amount of the inventory we have for this product.\n"
+
+  - name: dim_promos
+    description: ""
+    columns:
+      - name: promo_key
+        data_type: varchar
+        description: ""
+
+      - name: promo_id
+        data_type: varchar
+        description: ""
+
+      - name: promo_descr
+        data_type: varchar
+        description: ""
+
+      - name: dollar_discount
+        data_type: number
+        description: ""
+
+      - name: is_active
+        data_type: boolean
+        description: ""
+
+  - name: dim_users
+    description: ""
+    columns:
+      - name: user_key
+        data_type: varchar
+        description: ""
+
+      - name: user_bridge_id
+        data_type: varchar
+        description: ""
+
+      - name: ecommerce_user_id
+        data_type: varchar
+        description: ""
+
+      - name: social_user_id
+        data_type: varchar
+        description: ""
+
+      - name: student_user_id
+        data_type: varchar
+        description: ""
+
+      - name: address_id
+        data_type: varchar
+        description: ""
+
+      - name: name
+        data_type: varchar
+        description: ""
+
+      - name: email
+        data_type: varchar
+        description: ""
+
+      - name: phone_number
+        data_type: varchar
+        description: ""
+
+      - name: address
+        data_type: varchar
+        description: ""
+
+      - name: state
+        data_type: varchar
+        description: ""
+
+      - name: country
+        data_type: varchar
+        description: ""
+
+      - name: address_zipcode
+        data_type: number
+        description: ""
+
+      - name: device
+        data_type: varchar
+        description: ""
+
+      - name: daily_screen_time_hours
+        data_type: varchar
+        description: ""
+
+      - name: days_without_social_media
+        data_type: number
+        description: ""
+
+      - name: sleep_quality
+        data_type: varchar
+        description: ""
+
+      - name: stress_level
+        data_type: varchar
+        description: ""
+
+      - name: exercise_frequency_week
+        data_type: varchar
+        description: ""
+
+      - name: happiness_index
+        data_type: varchar
+        description: ""
+
+      - name: created_at
+        data_type: timestamp_tz
+        description: ""
+
+      - name: updated_at
+        data_type: timestamp_tz
+        description: ""
+
+  - name: fct_orders
+    description: ""
+    columns:
+      - name: order_key
+        data_type: varchar
+        description: ""
+
+      - name: user_key
+        data_type: varchar
+        description: ""
+
+      - name: promo_key
+        data_type: varchar
+        description: ""
+
+      - name: order_id
+        data_type: varchar
+        description: ""
+
+      - name: order_cost
+        data_type: number
+        description: ""
+
+      - name: order_total
+        data_type: number
+        description: ""
+
+      - name: created_at
+        data_type: timestamp_tz
+        description: ""
+
+      - name: estimated_at
+        data_type: timestamp_tz
+        description: ""
+
+      - name: delivery_at
+        data_type: timestamp_tz
+        description: ""
+
+      - name: delivery_time_days
+        data_type: number
+        description: ""
+
+  - name: fct_social_media_activity
+    description: ""
+    columns:
+      - name: sm_activity_key
+        data_type: varchar
+        description: ""
+
+      - name: user_key
+        data_type: varchar
+        description: ""
+
+      - name: device_key
+        data_type: varchar
+        description: ""
+
+      - name: date_key
+        data_type: varchar
+        description: ""
+
+      - name: event_type
+        data_type: varchar
+        description: ""
+
+      - name: content_topic
+        data_type: varchar
+        description: ""
+
+      - name: session_time_seconds
+        data_type: number
+        description: ""
+
+  - name: fct_student_performance
+    description: ""
+    columns:
+      - name: performance_key
+        data_type: varchar
+        description: ""
+
+      - name: student_key
+        data_type: varchar
+        description: ""
+
+      - name: date_key
+        data_type: varchar
+        description: ""
+
+      - name: subject_id
+        data_type: number
+        description: ""
+
+      - name: hours_studied
+        data_type: number
+        description: ""
+
+      - name: sleep_hours
+        data_type: number
+        description: ""
+
+      - name: attendance_percent
+        data_type: number
+        description: ""
+
+      - name: previous_scores
+        data_type: number
+        description: ""
+
+      - name: exam_score
+        data_type: number
+        description: ""
+
+      - name: term
+        data_type: varchar
+        description: ""

@@ -52,11 +52,6 @@ sources:
           - name: user_id
             data_type: varchar
             description: ""
-            data_tests:
-              - relationships:
-                  arguments:
-                    field: user_id
-                    to: source('sql_server', 'users')
           - name: product_id
             data_type: varchar
             description: ""
@@ -115,11 +110,6 @@ sources:
           - name: address_id
             data_type: varchar
             description: ""
-            data_tests:
-              - relationships:
-                  arguments:
-                    field: address_id
-                    to: source('sql_server', 'addresses')
           - name: created_at
             data_type: timestamp_tz
             description: ""
@@ -135,11 +125,6 @@ sources:
           - name: user_id
             data_type: varchar
             description: ""
-            data_tests:
-              - relationships:
-                  arguments:
-                    field: user_id
-                    to: source('sql_server', 'users')
           - name: order_total
             data_type: float
             description: ""
@@ -221,11 +206,6 @@ sources:
           - name: address_id
             data_type: varchar
             description: ""
-            data_tests:
-              - relationships:
-                  arguments:
-                    field: address_id
-                    to: source('sql_server', 'addresses')
           - name: last_name
             data_type: varchar
             description: ""

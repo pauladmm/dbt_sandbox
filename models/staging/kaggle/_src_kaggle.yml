@@ -11,79 +11,68 @@ sources:
           - name: user_id
             data_type: varchar
             description: "User id"
+
           - name: age
             data_type: number
             description: "User age"
+
           - name: gender
             data_type: varchar
             description: "User gender"
-          - name: "daily_screen_time(hrs)"
+
+          - name: daily_screen_time_hrs
             data_type: varchar
             description: "Daily screen time hours of user"
-          - name: "sleep_quality(1-10)"
-            data_type: varchar
-            data_tests:
-              - positive_values
-              - dbt_utils.accepted_range:
-                  arguments:
-                    max_value: 10
-            description: "Sleep quality of user based in health tracker app"
-          - name: "stress_level(1-10)"
-            data_type: varchar
-            data_tests:
-              - positive_values
-              - dbt_utils.accepted_range:
-                  arguments:
-                    max_value: 10
-            description: "Stress level stat of user based in health tracker app"
+
+          - name: "Sleep_Quality(1-10)"
+            data_type: number
+            description: "Sleep quality (1–10)"
+            
+          - name: "Stress_Level(1-10)"
+            data_type: number
+            description: "Stress level (1–10)"
+            
           - name: days_without_social_media
             data_type: number
             description: "Days in a row user has not been in any social media platform."
+
           - name: "exercise_frequency(week)"
-            data_type: varchar
+            data_type: number
             description: "How many times a week a user does exercise"
+
           - name: social_media_platform
             data_type: varchar
             description: "Social media platform preference by user."
-          - name: "happiness_index(1-10)"
-            data_type: varchar
-            description: "Happiness index calculated by algorithm"
-            data_tests:
-              - positive_values
-              - dbt_utils.accepted_range:
-                  arguments:
-                    max_value: 10
+
+          - name: "Happiness_Index(10)"
+            data_type: number
+            description: "Happiness index (1–10)"
+            
       - name: student_performance
         description: "Student performance in school"
         columns:
           - name: student_id
             data_type: varchar
-            description: "Student id"
           - name: hours_studied
             data_type: number
-            description: "Hours dedicated to studying by user"
           - name: sleep_hours
             data_type: number
-            description: "Sleep hours the previous day to an exam"
           - name: attendance_percent
             data_type: number
-            description: "Percentage of attendance in the subject by user"
           - name: previous_scores
             data_type: number
-            description: "Examen score in the previous exam"
           - name: exam_score
             data_type: number
-            description: "Exam score"
+
       - name: marketing_campaigns
         description: "Marketing campaigns"
         columns:
           - name: campaign_id
             data_type: varchar
-            description: "Campaign id"
+
           - name: campaign_type
             data_type: varchar
-            description: "Notification vía of campaign"
-            data_tests:
+            tests:
               - accepted_values:
                   arguments:
                     values:
@@ -92,12 +81,10 @@ sources:
                       - "Push Notification"
                       - "Search Ads"
                       - "Display Ads"
+
           - name: topic
             data_type: varchar
-            description: "Kind of campaign"
           - name: target
             data_type: varchar
-            description: "Target user of the campaign"
           - name: sent_at
             data_type: timestamp_tz
-            description: "When was the campaign sent"
