@@ -67,10 +67,10 @@ final_calc as (
         s.order_items_id,
         s.product_id,
         s.units,
-        ROUND(s.price_paid,1),
+        ROUND(s.price_paid,1) as price_paid,
 
         p.unit_cost,
-        ROUND(s.allocated_shipping,1),
+        ROUND(s.allocated_shipping,1) as allocated_shipping,
 
         ROUND((coalesce(pr.discount_amount / nullif(s.order_amount, 0) * (s.price_paid * s.units), 0)),1) as allocated_discount,
 

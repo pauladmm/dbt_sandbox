@@ -72,6 +72,43 @@ models:
       - name: zipcodes
   - name: stg_sql_server__promos
   - name: stg_sql_server__orders
+    description: The grain of this table is the order maden by day
+    columns:
+        - name: order_id
+          description: Primary key of orders table.
+        - name: shipping_service
+          description: The service which take charge of shipping the order.
+        - name: shipping_cost
+          description: The cost of shipping the order.
+        - name: address_id
+          description: foreing key from addresses table. One user can have more than one addresses.
+        - name: created_at
+        - name: promo_id
+          description: foreing key from promos table. Not every order has a promo.
+        - name: estimated_delivery_at
+        - name: order_cost
+          description: Cost of the current order. Without shipping cost or discount.
+        - name: user_id
+          description: Foreing key from users table.
+        - name: order_total
+          description: Total cost of the order, taking into account discounts and shipping cost.
+        - name: delivered_at
+          description: When was the order delivered
+        - name: tracking_id
+          description: Tracking identificator from order's delivery.
+        - name: status
+          description: The status of each order. Has concrete values.
+          data_tests:
+            - accepted_values:
+                arguments:
+                  values:
+                      - "delivered"
+                      - "preparing"
+                      - "shipped"
+                      - "returned"
+        - name: _fivetran_deleted
+        - name: _fivetran_synced
+
   - name: stg_sql_server__shipping_service
   - name: stg_sql_server__users
   - name: stg_sql_server__order_items

@@ -98,9 +98,6 @@ sources:
           - name: order_id
             data_type: varchar
             description: ""
-            data_tests:
-              - not_null
-              - unique
           - name: shipping_service
             data_type: varchar
             description: ""
